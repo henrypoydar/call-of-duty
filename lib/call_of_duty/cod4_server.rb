@@ -6,7 +6,7 @@ module CallOfDuty
   # http://www.trdev.co.uk/posts/hello-world/
   class Cod4Server
 
-    QUERY_TIMEOUT = 5 #maximum query of 5 seconds
+    QUERY_TIMEOUT = 5 # maximum query of 5 seconds
     QUERY_STRING = "\xFF\xFF\xFF\xFFgetstatus\x00"
 
     attr_accessor :ip_address, :port
@@ -22,7 +22,7 @@ module CallOfDuty
       begin
         socket = UDPSocket.open
         socket.send(QUERY_STRING, 0, @ip_address, @port)
-        response = if select([socket], nil, nil, QUERY_TIMEOUT)
+        response = if IO.select([socket], nil, nil, QUERY_TIMEOUT)
           socket.recvfrom(65536)  #wait 5 seconds to recieve 65536 bytes of data
         end
         if response
