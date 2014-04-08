@@ -1,7 +1,3 @@
-module Call
-  module Of
-    module Duty
-      VERSION = "0.0.1"
-    end
-  end
+module CallOfDuty
+  VERSION = "0.1.0"
 end
